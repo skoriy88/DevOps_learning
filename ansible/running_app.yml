@@ -1,0 +1,7 @@
+---
+- name: pulling & running app
+  hosts: testing_servers
+  become: yes
+
+  roles:
+    - running_app

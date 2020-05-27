@@ -1,0 +1,37 @@
+---
+# Creating project directory
+- name: Create project directory
+  file:
+    path: "{{ project_dir }}"
+    state: directory
+
+# Uploading jar file to project directory
+- name: Copy app.jar
+  copy:
+    src: files/app.jar
+    dest: "{{ project_dir }}"
+
+# Starting app
+- name: Starting java app
+  shell: nohup java -jar "{{ project_dir }}"/app.jar
+
+# Checking if app is working
+- name: Checking running app
+  uri:
+    url: http://192.168.10.103:8080
+
+
+# Pulling project from GitHub
+#- name: Git init
+#  shell: git init "{{ project_dir }}"
+
+#- git:
+#    repo: https://github.com/spring-guides/gs-serving-web-content.git
+#    dest: "{{ project_dir }}"
+
+#- name: pull project
+#  command: git pull https://github.com/spring-guides/gs-serving-web-content.git
+#  become: yes
+#  become_user: vagrant
+#  args:
+#    chdir: "{{ project_dir }}"

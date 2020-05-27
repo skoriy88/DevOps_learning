@@ -65,16 +65,21 @@
     msg: "Container Output: {{hello_world_output.stdout}}"
 
 # Installing java
-- name: Checking for man directory
-  file:
-    path: /usr/share/man/man1
-    state: directory
-    recurse: true
-  when:
-    - ansible_distribution == 'Ubuntu'
-    - ansible_distribution_major_version | int >= 18
+- name: Update repository
+  apt:
+    update_cache: yes
 
 - name: Installing java
   apt:
     name: "{{ JAVA_PACKAGES }}"
+    state: present
+
+# Installing Maven
+- name: Update repository
+  apt:
+    update_cache: yes
+
+- name: Installing Maven
+  apt:
+    name: maven
     state: present
