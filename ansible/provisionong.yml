@@ -1,0 +1,7 @@
+---
+- name: Install java on Ubuntu
+  hosts: testing_servers
+  become: yes
+
+  roles:
+    - provisioning

@@ -1,0 +1,11 @@
+---
+- name: Create new user group
+  group:
+    name: ansible
+    state: present
+
+- name: Add new user
+  user:
+    name: ansible
+    comment: New User created by ansible playbook
+    groups: sudo, vagrant, ansible
