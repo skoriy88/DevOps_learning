@@ -1,0 +1,7 @@
+---
+- name: Install Nginx on Centos servers
+  hosts: centos_servers
+  become: yes
+
+  roles:
+    - setup_nginx

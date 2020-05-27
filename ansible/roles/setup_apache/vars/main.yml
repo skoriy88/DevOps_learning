@@ -1,0 +1,5 @@
+---
+http_host: apache_on_ubuntu
+http_conf: apache_on_ubuntu.conf
+http_port: "80"
+disable_default: true

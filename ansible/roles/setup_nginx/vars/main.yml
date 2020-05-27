@@ -1,0 +1,4 @@
+---
+http_host: nginx_on_centos
+http_conf: nginx.conf
+http_port: "80"

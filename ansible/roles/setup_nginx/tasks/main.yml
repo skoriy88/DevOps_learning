@@ -1,0 +1,26 @@
+---
+- name: Install nginx on centos
+  yum:
+    name: nginx
+    state: latest
+
+- name: Create document root
+  file:
+    path: "/var/www/{{ http_host }}"
+    state: directory
+    mode: '0755'
+
+- name: Copy index test page
+  template:
+    src: index.html.j2
+    dest: "/var/www/{{ http_host }}/index.html"
+
+- name: Set up Nginx virtuahHost
+  template:
+    src: nginx.conf.j2
+    dest: "/etc/nginx/{{ http_conf }}"
+  notify: Restart Nginx
+
+- name: Check connection to Nginx via ip
+  uri:
+    url: http://192.168.10.101
