@@ -1,5 +1,5 @@
 ---
-- name: Install java on Ubuntu
+- name: Creating user, installing docker & java
   hosts: testing_servers
   become: yes
 
