@@ -8,7 +8,7 @@
 # Uploading jar file to project directory
 - name: Copy app.jar
   copy:
-    src: files/app.jar
+    src: app.jar
     dest: "{{ project_dir }}"
 
 # Starting app
